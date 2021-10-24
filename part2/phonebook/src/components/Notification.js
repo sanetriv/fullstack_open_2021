@@ -24,7 +24,7 @@ const Notification = ({message, errorMessage}) => {
       return null
     }
 
-    if (message.includes('already deleted')){
+    if (message.includes('already deleted') || message.includes('shorter')){
         return (
         <div style={errorStyle}>
             {message}

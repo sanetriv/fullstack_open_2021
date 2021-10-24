@@ -51,6 +51,10 @@ const App = () => {
         setMessage(null)
       }, 3000)
     })
+    .catch(error => {
+      setMessage(`${error.response.data.error}`)
+      console.log(error.response.data)
+    })
   }
 
   const peopleToShow = persons.filter(person => person.name.toUpperCase().includes(newSearch.toUpperCase())) 
@@ -95,13 +99,18 @@ const App = () => {
         }, 3000)
       })
       .catch(error => {
+        if(JSON.stringify(error.response.data).includes('shorter')){
+          setMessage(`${error.response.data.error}`)
+          console.log(error.response.data)
+        }else{
         setMessage(
           `${note.name} was already deleted from the server`
         )
+        setPersons(persons.filter(n => n.id !== id))
+        }
         setTimeout(() => {
           setMessage(null)
         }, 5000)
-        setPersons(persons.filter(n => n.id !== id))
       })
   }
 
