@@ -29,8 +29,12 @@ describe('get tests', () => {
     })
 })
 
-//test('blog has identifier id', async () => {
-//})
+describe('id exists', () => {
+    test('blog has identifier id', async () => {
+        const response = await api.get('/api/blogs')
+        expect(response.body[0].id).toBeDefined()
+    })
+})
 
 describe('post tests', () => {
     test('length increases by 1', async () => {
@@ -70,6 +74,17 @@ describe('post tests', () => {
             .expect('Content-Type', /application\/json/)
 
         expect(savedBlog.body.likes).toBe(0)
+    })
+
+    test('missing title and url', async () => {
+        const newBlog = 
+            {
+                "author": "asd lol"
+            }
+        await api
+            .post('/api/blogs')
+            .send(newBlog)
+            .expect(400)
     })
 })
 
