@@ -65,7 +65,7 @@ blogsRouter.delete('/:id', middleware.userExtractor, async (request, response, n
   }
 })
 
-/*blogsRouter.put('/:id', async (request, response) => {
+blogsRouter.put('/:id', async (request, response) => {
   const body = request.body
 
   const blog = {
@@ -80,6 +80,6 @@ blogsRouter.delete('/:id', middleware.userExtractor, async (request, response, n
     response.json(updatedBlog.toJSON())
   }
   response.status(400).end()
-})*/
+})
 
 module.exports = blogsRouter
