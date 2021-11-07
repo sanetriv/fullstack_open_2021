@@ -20,6 +20,7 @@ const NewBlogForm = ({ createBlog }) => {
           title:
           <input
             type="text"
+            id='title'
             value={title}
             name="title"
             onChange={({ target }) => setTitle(target.value)}
@@ -29,6 +30,7 @@ const NewBlogForm = ({ createBlog }) => {
           author:
           <input
             type="text"
+            id='author'
             value={author}
             name="author"
             onChange={({ target }) => setAuthor(target.value)}
@@ -38,18 +40,19 @@ const NewBlogForm = ({ createBlog }) => {
           url:
           <input
             type="text"
+            id='url'
             value={url}
             name="url"
             onChange={({ target }) => setUrl(target.value)}
           />
         </div>
-        <button type="submit">create</button>
+        <button type="submit" id='createNewButton'>create</button>
       </form>
     </div>
   )
 }
 
-NewBlogForm.PropTypes = {
+NewBlogForm.propTypes = {
   createBlog : PropTypes.func.isRequired
 }
 

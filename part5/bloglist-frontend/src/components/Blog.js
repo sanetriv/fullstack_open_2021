@@ -8,6 +8,7 @@ const Blog = ({ blog, updateLikes, deleteBlog, user }) => {
     borderWidth: 1,
     marginBottom: 5
   }
+  //console.log(user, blog.user)
   const [showDetails, setShowDetails] = useState(false)
   const [showRemove] = useState(user.username===blog.user.username)
   const detailsVisible = { display: showDetails ? '' : 'none' }
@@ -22,14 +23,14 @@ const Blog = ({ blog, updateLikes, deleteBlog, user }) => {
   return(
     <div style={blogStyle}>
       <div>
-        {blog.title} <button onClick={() => setShowDetails(!showDetails)}>{showDetails?'hide':'view'}</button>
+        {blog.title} <button onClick={() => setShowDetails(!showDetails)} className='viewHide'>{showDetails?'hide':'view'}</button>
       </div>
-      <div style={detailsVisible}>
+      <div style={detailsVisible} className='details'>
         {blog.url}<br></br>
-        likes {blog.likes} <button onClick={likeBlog}>like</button><br></br>
+        likes {blog.likes} <button onClick={likeBlog} className='likeButton'>like</button><br></br>
         {blog.author}<br></br>
         <div style={removeVisible}>
-          <button onClick={removeBlog}>remove</button>
+          <button onClick={removeBlog} id='removeBlogButton'>remove</button>
         </div>
       </div>
     </div>
