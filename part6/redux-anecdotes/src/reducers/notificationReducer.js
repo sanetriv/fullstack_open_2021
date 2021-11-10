@@ -1,10 +1,14 @@
 const initialState = ''
 
+let timeoutId
+
 export const setNoti = (msg, time) => {
   const seconds = time*1000
   return async dispatch => {
+    dispatch({ type:'CLEAR' })
+    clearTimeout(timeoutId)
     dispatch({ type:'SET', message:msg })
-    setTimeout(function () {
+    timeoutId = setTimeout(function () {
       dispatch({ type:'CLEAR' })
     }, seconds)
   }
