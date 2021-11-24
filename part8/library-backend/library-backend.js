@@ -5,6 +5,7 @@ const Book = require('./models/Book')
 const Author = require('./models/Author')
 const jwt = require('jsonwebtoken')
 const User = require('./models/User')
+import {MONGODB_URI, JWT_SECRET} from './.env'
 
 let authors = [
   {
@@ -94,9 +95,6 @@ let books = [
   },
 ]
 
-const MONGODB_URI = 'mongodb+srv://fullstack:KE1Je0BAau4rV9tx@cluster0.jjlmg.mongodb.net/library?retryWrites=true&w=majority'
-
-const JWT_SECRET = 'NEED_HERE_A_SECRET_KEY'
 console.log('connecting to', MONGODB_URI)
 
 mongoose.connect(MONGODB_URI)
